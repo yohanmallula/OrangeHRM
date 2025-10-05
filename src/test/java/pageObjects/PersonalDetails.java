@@ -133,6 +133,8 @@ public class PersonalDetails {
 
 	    // Find the input field(s)
 	    List<WebElement> elements = driver.findElements(Firstname);
+	    
+	    System.out.println("");
 		
 		if(!elements.isEmpty()) {
 			WebElement input = elements.get(0);
