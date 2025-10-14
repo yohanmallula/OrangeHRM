@@ -46,6 +46,10 @@ public class PersonalDetails_MyInfo_05 extends  TestBase {
 		personalDetailsPage.UserName();
 		personalDetailsPage.firstname();
 		personalDetailsPage.Required();
+		personalDetailsPage.middelname();
+		personalDetailsPage.lastname();
+		personalDetailsPage.verifyEmployeeLabels();
+		personalDetailsPage.verifyEmployeeTextFields();
 		
 		log.info("All Job MyInfo verifications completed successfully");
 		

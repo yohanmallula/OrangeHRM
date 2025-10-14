@@ -1,7 +1,9 @@
 package pageObjects;
 
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -40,6 +42,17 @@ public class PersonalDetails {
 	By Firstname = By.xpath("//*[@name=\"firstName\"]");
 	
 	By Required = By.xpath("//*[text()='Required']");
+	
+	By middelname = By.xpath("//*[@name=\"middleName\"]");
+	
+	By lastname = By.xpath("//*[@name=\"lastName\"]");
+	
+	By EmployeeIDLable = By.xpath("//*[text()='Employee Id']");
+	
+	
+	By EmployeeTextField = By.xpath("(//*[@class=\"oxd-input oxd-input--active\"])[2]");
+	
+	By OtherIdTextField = By.xpath("(//*[@class=\"oxd-input oxd-input--active\"])[3]");
 	
 	public void PersonalDetails() {
 		driver.findElement(PersonalDetails).click();
@@ -148,13 +161,120 @@ public class PersonalDetails {
 		           // input.sendKeys(Keys.chord(Keys.CONTROL, "a"));
 		           // input.sendKeys(Keys.BACK_SPACE);
 		            input.sendKeys("Yohan");  // enter the desired value
-		        }
-			
+		        }		
 			
 		}
 		
 		
 	}
+	
+	public void middelname() {
+		//driver.findElement(middelname).sendKeys("hammm");
+		
+	
+		
+		List<WebElement> elements = driver.findElements(middelname);
+		
+		if(!elements.isEmpty()) {
+			WebElement input = elements.get(0);
+			
+			
+			input.sendKeys(Keys.CONTROL, "a");
+			input.sendKeys(Keys.BACK_SPACE);
+			input.sendKeys("mallula");
+			
+		}
+	}
+	
+	public void lastname() {
+		List<WebElement> elements = driver.findElements(lastname);
+		
+		if(!elements.isEmpty()) {
+			
+			WebElement input = elements.get(0);
+			
+		 input.sendKeys(Keys.CONTROL, "a");
+		 input.sendKeys(Keys.BACK_SPACE);
+		 input.sendKeys("hammmmmmm");
+		 
+		}
+	}
+	
+	public void EmployeeIDLable() {
+		List<WebElement> elements = driver.findElements(EmployeeIDLable);
+		
+		if(!elements.isEmpty()) {
+			
+			WebElement input = elements.get(0);
+			
+			String actualText = input.getText();
+			String expetedText = "Employee Id";
+			
+			
+			Assert.assertEquals(actualText.trim(), expetedText , "Employee id lable   is not equal");
+			
+			
+			
+		}else {
+			log.error(" EmployeeIDLable element is not foun the DOM");
+		}
+	}
+	
+	public void verifyEmployeeLabels() {
+		
+		
+		Map<String , By> labelLocators = new HashMap<>();
+		
+		labelLocators.put("Employee Id" , EmployeeIDLable );
+		
+		for(Map.Entry<String , By> entry : labelLocators.entrySet()) {
+			List<WebElement> elements = driver.findElements(entry.getValue());
+			
+			if(!elements.isEmpty()) {
+				String actualText = elements.get(0).getText().trim();
+				Assert.assertEquals(actualText , entry.getKey(), entry.getKey() + " label text mismatch");
+			}
+		
+		}
+		
+	
+	}
+	
+	public void verifyEmployeeTextFields() {
+		
+		Map<By, String> employeeData = new HashMap<>();
+		
+		
+		  employeeData.put(EmployeeTextField, "EMP10234");
+		  employeeData.put(OtherIdTextField, "nothing");
+		
+		for(Map.Entry<By , String> entry:employeeData.entrySet()) {
+			
+			By locator = entry.getKey();
+			String value = entry.getValue();
+			
+			List<WebElement> fields =  driver.findElements(locator);
+			
+			if(!fields.isEmpty()) {
+				WebElement input = fields.get(0);
+				
+				if(input.isDisplayed() && input.isEnabled()) {
+					input.clear();
+					input.sendKeys(value);
+					log.info("Entered text in field: " + locator + " → " + value);
+				}else {
+	                log.error("Field not interactable: " + locator);
+	            }
+			}else {
+	            log.error("Field not found in DOM: " + locator);
+	        }
+		}
+	}
+	
+	
+	
+	
+	
 	
 	
 }
