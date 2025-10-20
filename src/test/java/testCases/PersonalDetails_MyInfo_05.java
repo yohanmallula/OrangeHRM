@@ -15,7 +15,7 @@ public class PersonalDetails_MyInfo_05 extends  TestBase {
 	
 	
 	@Test()
-	public void Myinfo() {
+	public void PersonalDetails_Login() {
 
 		// Step 1: Fetch credentials from SQL Server
 		String[] credentials = DB_Userid_Pass.getLoginCredentials();
@@ -33,7 +33,7 @@ public class PersonalDetails_MyInfo_05 extends  TestBase {
 	
 	
 	@Test()
-	public void myinfo2() throws InterruptedException {
+	public void PersonalDetails() throws InterruptedException {
 
 		MyInfo myInfo = new MyInfo(driver);
 		myInfo.info();
@@ -50,6 +50,7 @@ public class PersonalDetails_MyInfo_05 extends  TestBase {
 		personalDetailsPage.lastname();
 		personalDetailsPage.verifyEmployeeLabels();
 		personalDetailsPage.verifyEmployeeTextFields();
+		personalDetailsPage.DrivingLiceneceLabel();
 		
 		log.info("All Job MyInfo verifications completed successfully");
 		

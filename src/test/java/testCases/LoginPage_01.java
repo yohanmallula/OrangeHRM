@@ -1,4 +1,5 @@
 package testCases;
+import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 
 import pageObjects.DB_Userid_Pass;
@@ -9,6 +10,8 @@ import testBase.TestBase;
 
 
 public class LoginPage_01 extends TestBase{
+	
+	public static final Logger log = Logger.getLogger(Job_MyInfo_04.class);
 	
 	
 	@Test
@@ -29,6 +32,8 @@ public class LoginPage_01 extends TestBase{
 		hp.gettext();
 		hp.Login_button();
 		//my.info();
+		
+		log.info("All login_page  verifications completed successfully");
 	}
 
 }

@@ -1,13 +1,17 @@
 package pageObjects;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.asserts.SoftAssert;
+import exceptions.Exceptions;
+import testCases.Job_MyInfo_04; 
 
 public class Immigration_MyInfo {
 	
-	
+	public static final Logger log = Logger.getLogger(Job_MyInfo_04.class);
 	//
 	SoftAssert softAssert = new SoftAssert();
 
@@ -51,10 +55,17 @@ public class Immigration_MyInfo {
 	 By Yes_Delete = By.xpath("//*[text()=' Yes, Delete ']");
 	 
 	 
+
 	 public void Immigration() {
-			driver.findElement(Immigration).click();
+		    try {
+		        driver.findElement(Immigration).click();
+		    } catch (NoSuchElementException e) {
+		    	log.error("Immigration element not found on the page", e);
+		        throw new Exceptions("Immigration element not found on the page", e);
+		    }
 		}
-	 
+
+
 	 
 	 public void Assignre_GetText() {
 		 String GetText =  driver.findElement(Assignre_GetText).getText();

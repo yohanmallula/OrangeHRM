@@ -1,5 +1,6 @@
 package testCases;
 
+import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 
 import pageObjects.DB_Userid_Pass;
@@ -12,6 +13,8 @@ import utils.DB_ContactDetailsFetcher.ContactDetails;
 
 
 public class MyInfo_02   extends TestBase{
+	
+	public static final Logger log = Logger.getLogger(Job_MyInfo_04.class);
 	
 	
 	@Test()
@@ -67,6 +70,8 @@ public class MyInfo_02   extends TestBase{
 		//Thread.sleep(2000);
 	//PersonalDetails.add();
 		//PersonalDetails.upload();
+		
+		log.info("All Job MyInfo verifications completed successfully");
 		
 	}
 

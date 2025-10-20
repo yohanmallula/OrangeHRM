@@ -1,5 +1,6 @@
 package testCases;
 
+import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 
 import pageObjects.DB_Userid_Pass;
@@ -9,9 +10,12 @@ import pageObjects.MyInfo;
 import testBase.TestBase;
 
 public class Immigration_MyInfo_03 extends TestBase {
+	
+	public static final Logger log = Logger.getLogger(Job_MyInfo_04.class);
+
 
 	@Test()
-	public void Myinfo() {
+	public void Immigration_Login() {
 
 		// Step 1: Fetch credentials from SQL Server
 		String[] credentials = DB_Userid_Pass.getLoginCredentials();
@@ -28,7 +32,7 @@ public class Immigration_MyInfo_03 extends TestBase {
 	}
 
 	@Test()
-	public void myinfo2() throws InterruptedException {
+	public void Immigration() throws InterruptedException {
 
 		MyInfo myInfo = new MyInfo(driver);
 		myInfo.info();
@@ -66,12 +70,14 @@ public class Immigration_MyInfo_03 extends TestBase {
 		
 		Immigration.delete();
 		
-		Thread.sleep(2000);
+		Thread.sleep(2000); 
 		
 		Immigration.No_cancel();
 		Thread.sleep(2000);
 		Immigration.delete();
 		
 		Immigration.Yes_Delete();
+		
+		log.info("All Immigration verifications completed successfully");
 	}
 }

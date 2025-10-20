@@ -15,7 +15,7 @@ public class Job_MyInfo_04   extends  TestBase{
 	
 	
 	@Test()
-	public void Myinfo() {
+	public void Job_Login() {
 
 		// Step 1: Fetch credentials from SQL Server
 		String[] credentials = DB_Userid_Pass.getLoginCredentials();
@@ -32,7 +32,7 @@ public class Job_MyInfo_04   extends  TestBase{
 	}
 	
 	@Test()
-	public void myinfo2() throws InterruptedException {
+	public void Job_MyInfo() throws InterruptedException {
 
 		MyInfo myInfo = new MyInfo(driver);
 		myInfo.info();

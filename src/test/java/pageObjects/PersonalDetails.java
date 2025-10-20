@@ -54,6 +54,8 @@ public class PersonalDetails {
 	
 	By OtherIdTextField = By.xpath("(//*[@class=\"oxd-input oxd-input--active\"])[3]");
 	
+	By DrivingLiceneceLabel = By.xpath("//*[text()=\"Driver's License Number\"]");
+	
 	public void PersonalDetails() {
 		driver.findElement(PersonalDetails).click();
 	}
@@ -258,8 +260,9 @@ public class PersonalDetails {
 			if(!fields.isEmpty()) {
 				WebElement input = fields.get(0);
 				
-				if(input.isDisplayed() && input.isEnabled()) {
-					input.clear();
+				if(input.isDisplayed() && input.isEnabled()) {			
+					input.sendKeys(Keys.CONTROL , "a");
+					input.sendKeys(Keys.BACK_SPACE);
 					input.sendKeys(value);
 					log.info("Entered text in field: " + locator + " → " + value);
 				}else {
@@ -271,6 +274,24 @@ public class PersonalDetails {
 		}
 	}
 	
+	public void DrivingLiceneceLabel() {
+		List<WebElement>  element =   driver.findElements(DrivingLiceneceLabel);
+		
+		
+		if(!element.isEmpty()) {
+			WebElement input = element.get(0);
+			
+			String actualText = input.getText();
+			
+			String expeted =  "Driver's License Number";
+			
+			Assert.assertEquals(actualText , expeted , "ist not equal");
+			
+			System.out.println(input.getText());
+		}else {
+			log.error("is not DOM");
+		}
+	}
 	
 	
 	
