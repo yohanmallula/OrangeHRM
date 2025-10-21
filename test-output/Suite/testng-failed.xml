@@ -9,6 +9,7 @@
     <classes>
       <class name="testCases.PersonalDetails_MyInfo_05">
         <methods>
+          <include name="PersonalDetails_Login"/>
           <include name="setup"/>
           <include name="tearDown"/>
           <include name="PersonalDetails"/>
@@ -17,10 +18,19 @@
       <class name="testCases.Immigration_MyInfo_03">
         <methods>
           <include name="setup"/>
+          <include name="Immigration_Login"/>
           <include name="tearDown"/>
           <include name="Immigration"/>
         </methods>
       </class> <!-- testCases.Immigration_MyInfo_03 -->
+      <class name="testCases.Job_MyInfo_04">
+        <methods>
+          <include name="Job_Login"/>
+          <include name="setup"/>
+          <include name="tearDown"/>
+          <include name="Job_MyInfo"/>
+        </methods>
+      </class> <!-- testCases.Job_MyInfo_04 -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
